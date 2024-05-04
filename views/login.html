@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+        
+        <link rel="stylesheet" href="/css/login.css">
+    </head>
+    
+    <body>
+        <a><img src="carlogo.jpg" alt="a"></a>
+        
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact Us</li>
+                </ul>
+            </nav>
+    
+       
+        <div id="loginDiv">
+            <h3>LOGIN</h3>
+            <form id="login-form" action="/login" method="post">
+                <div class="form-grp">
+                    <label for="username">Login ID</label>
+                    <input type="text" id="username" name="username" required maxlength="20">
+                </div>
+                <div class="form-grp">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required maxlength="20">
+                </div>
+                <button type="submit" class="btn">Login</button><br>
+                <span><p>New User ?</p>
+                    <a href="/signup">click here</a>
+                </span>
+            </form>
+        </div>
+    </body>
+    <script src="./js/prevent.js"></script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="/css/signup.css">
+</head>
+
+<body>
+    <a><img src="carlogo.jpg" alt="a"></a>
+    <nav>
+        <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact Us</li>
+        </ul>
+    </nav>
+    <div id="signupDiv">
+        <h3>SIGNUP</h3>
+        <form id="signup-form" action="/signup" method="post" onsubmit="return validateForm()">
+            <div class="form-grp">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required maxlength="45">
+            </div>
+            <div class="form-grp">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required maxlength="45"> 
+            </div>
+            <div class="form-grp">
+                <label for="loginid">Login ID(max 20 characters)</label>
+                <input type="text" id="loginid" name="loginid" required maxlength="20">
+            </div>
+            <div class="form-grp">
+                <label for="password">Password(max 20 characters)</label>
+                <input type="password" id="password" name="password" required maxlength="20">
+            </div>
+            <div class="form-grp">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required maxlength="20">
+            </div>
+            <button type="submit" class="btn">Signup</button>
+            <span>
+            <p>Already have an Account?</p>
+            <a href="/login.html">login</a>
+            </span>
+        </form>
+        
+    </div>
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password !== confirmPassword) {
+                alert("Password and confirm password do not match");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

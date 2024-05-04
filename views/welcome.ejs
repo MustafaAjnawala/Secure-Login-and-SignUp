@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/login.css">
+        <script>
+            function logout() {
+                // Clear session storage
+                sessionStorage.clear();
+                // Delete cookies
+                var cookies = document.cookie.split(";");
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i];
+                    var eqPos = cookie.indexOf("=");
+                    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=";
+                }
+
+                // Replace the current history entry with the login page's URL
+                window.history.replaceState({}, document.title, '/');
+
+                // Redirect the user to the login page
+                window.location.href = '/';
+            }
+        </script>
+        <a><img src="carlogo.jpg" alt="a"></a>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact Us</li>
+                <li>
+                    <%= name %>
+                </li>
+                <li><a href="/" onclick="logout()"><button>Logout</button></a></li>
+            </ul>
+        </nav>
+
+
+        <link rel="stylesheet" href="/css/welcome.css">
+    </head>
+    
+<body>
+    <h1>Welcome <%= name %>!</h1> <!-- Display the name instead of the username -->
+    <h3 class="bodytext"> Press below button to access Demo Video</h3>
+    <button class="play_button" onclick="playVideo()">Play</button><br>
+    <iframe src="video.webm" frameborder="0"></iframe>
+    
+    <script>
+        function playVideo() {
+            // Get the iframe element
+            var iframe = document.querySelector('iframe');
+    
+            if (iframe) {
+                // Set the 'src' attribute of the iframe to start playing the video
+                iframe.setAttribute('src', 'video.webm');
+            }
+        }
+    </script>
+    
+    
+</body>
+<script src="./js/prevent.js"></script>
+
+</html>

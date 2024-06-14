@@ -1,7 +1,7 @@
 # Project setup steps 
 Setting up the NodeJS server to run the Project:
 
-npm inti -y
+npm init -y
 
 npm install express mysql2 nodemon cors
 

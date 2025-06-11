@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -5,7 +6,7 @@ const sanitizeHtml = require('sanitize-html');
 const bcrypt = require('bcrypt');
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 3000;
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
@@ -16,12 +17,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: 'localhost',
-  user: 'root',
-  password: 'Sql$123%',
-  database: 'asl'
+  connectionLimit: 5,
+  port: process.env.SQLPORT,
+  host: process.env.MYSQL_URL,
+  user: process.env.U,
+  password: process.env.PWDD,
+  database: process.env.DB
 });
+
+pool.getConnection((err,connection)=>{
+  if(err){
+    console.log("Error connecting to MySQL DB:", err);
+    return;
+  }
+  console.log("MYSQL connection successfull");
+  connection.release();
+})
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/login.html');
